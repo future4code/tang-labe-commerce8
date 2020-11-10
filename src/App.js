@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Switch, Route } from "react-router-dom"
 import './App.css';
+import Filtro from './Filtro'
+import Contato from './components/Contato'
+import Navbar from './components/Navbar'
+import Error from './components/Error'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  render() {
+    return ( 
+      <div className="container">
+        <Navbar />      
+        <Switch>
+        <Route exact path="/" component={Filtro}></Route>
+        <Route path="/contato" component={Contato}></Route>
+        <Route component={Error}></Route>
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;
